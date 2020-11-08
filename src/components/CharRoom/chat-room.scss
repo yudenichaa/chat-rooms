@@ -1,0 +1,108 @@
+.chat-room {
+    height: 100%;
+}
+
+.chat-room__content {
+    max-width: 50rem;
+    height: 100%;
+    max-height: 100%;
+    margin: auto;
+    padding-top: 1rem;
+    display: flex;
+    flex-direction: column;
+
+    @media screen and (min-width: 50rem) {
+        border-left: 0.05rem solid lightgray;
+        border-right: 0.05rem solid lightgray;
+    }
+}
+
+.chat-room__name {
+    text-align: center;
+    font-weight: 400;
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
+}
+
+.chat-room__messages {
+    flex-grow: 1;
+    overflow: auto;
+    padding: 0 1rem;
+
+    &::-webkit-scrollbar {
+        width: 10px;
+    }
+
+    &::-webkit-scrollbar-track {
+        background-color: #f1f1f1;
+        border-radius: 5px;
+    }
+
+    &::-webkit-scrollbar-thumb {
+        background-color: #888;
+        border-radius: 5px;
+    }
+
+    &::-webkit-scrollbar-thumb:hover {
+        background-color: rgb(105, 105, 105);
+    }
+}
+
+.chat-room__message {
+    &:not(:last-child) {
+        margin-bottom: 1rem;
+    }
+}
+
+.chat-room__message__header {
+    padding: 0 0.5rem;
+    font-size: 0.8rem;
+    margin-bottom: 0.25rem;
+}
+
+.chat-room__message-text {
+    background-color: #f2f2f2;
+    width: fit-content;
+    padding: 0.5rem 1rem;
+    letter-spacing: 0.05rem;
+    line-height: 1.1;
+    text-align: justify;
+    border-radius: 1rem;
+    font-size: 1.1rem;
+    font-weight: 400;
+}
+
+.chat-room__message-user {
+    color: #36558f;
+}
+
+.chat-room__post-message-form {
+    display: flex;
+    border-top: 0.05rem solid #36558f;
+}
+
+.chat-room__message-input {
+    border: none;
+    outline: none;
+    padding: 1rem;
+    background-color: #f2f2f2;
+    font-size: 1rem;
+    font-weight: 400;
+    flex-grow: 1;
+}
+
+.chat-room__post-message-button {
+    border: none;
+    outline: none;
+    padding: 0 1.5rem;
+    background-color: #f2f2f2;
+    background-image: url("./assets/plus.svg");
+    background-size: 1.5rem 1.5rem;
+    background-repeat: no-repeat;
+    background-position: center;
+    cursor: pointer;
+
+    &:hover {
+        opacity: 0.8;
+    }
+}
