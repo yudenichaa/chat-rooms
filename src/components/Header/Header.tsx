@@ -24,7 +24,7 @@ const Header = React.forwardRef<HTMLDivElement, IHeader>(({ user }, ref) => {
 
     return (
         <div ref={ref} className="header">
-            <img className="header__logo-image" src={logo} alt="logo" />
+            <img className="header__logo-image" src={`/${logo}`} alt="logo" />
             {user ? (
                 <Button onClick={signOut} color="primary">
                     Sign out

@@ -12,6 +12,7 @@ module.exports = {
     devtool: "inline-source-map",
     devServer: {
         contentBase: "./public",
+        historyApiFallback: true,
     },
     resolve: {
         extensions: [".tsx", ".ts", ".js"],
@@ -27,7 +28,16 @@ module.exports = {
             // sass/scss
             {
                 test: /\.s[ac]ss$/i,
-                use: ["style-loader", "css-loader", "sass-loader"],
+                use: [
+                    "style-loader",
+                    {
+                        loader: "css-loader",
+                        options: {
+                            url: true,
+                        },
+                    },
+                    "sass-loader",
+                ],
             },
             // css
             {

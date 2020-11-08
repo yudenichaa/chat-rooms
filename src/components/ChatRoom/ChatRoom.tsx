@@ -1,11 +1,12 @@
 import React, { useState, useCallback, useEffect, useRef } from "react";
 import { db } from "../../firebase";
 import firebase from "firebase";
+import postMessageIcon from "./assets/plus.svg";
 import "./chat-room.scss";
+import { RouteComponentProps, useParams } from "react-router-dom";
 
-interface IChatRoom {
+interface IChatRoom extends RouteComponentProps {
     user: firebase.User | null;
-    roomName: string;
     height: number;
 }
 
@@ -16,12 +17,33 @@ interface IMessage {
     timestamp: firebase.firestore.Timestamp | null;
 }
 
+interface IRoomRouteParams {
+    id: string;
+}
+
 firebase.firestore.FieldValue.serverTimestamp;
 
-const ChatRoom: React.FC<IChatRoom> = ({ user, roomName, height }) => {
+const ChatRoom: React.FC<IChatRoom> = ({ user, height }) => {
+    const { id: roomId } = useParams<IRoomRouteParams>();
+
+    console.log(roomId);
+
+    const [roomName, setRoomName] = useState<string>("");
+    useEffect(() => {
+        db.collection("rooms")
+            .doc(roomId)
+            .get()
+            .then((doc) => {
+                setRoomName(doc.data().name);
+            })
+            .catch((error) => alert(error.message));
+    }, [roomId]);
+
     const [messages, setMessages] = useState<Array<IMessage>>([]);
     useEffect(() => {
-        db.collection("messages")
+        db.collection("rooms")
+            .doc(roomId)
+            .collection("messages")
             .orderBy("timestamp", "asc")
             .onSnapshot((snapshot) => {
                 setMessages(
@@ -36,7 +58,7 @@ const ChatRoom: React.FC<IChatRoom> = ({ user, roomName, height }) => {
                     })
                 );
             });
-    }, []);
+    }, [roomId]);
 
     const messagesRef = useRef<HTMLDivElement | null>();
     const [scrollToBottom, setScrollToBottom] = useState<boolean>(false);
@@ -59,7 +81,9 @@ const ChatRoom: React.FC<IChatRoom> = ({ user, roomName, height }) => {
         (event: React.MouseEvent | React.FormEvent<HTMLFormElement>) => {
             event.preventDefault();
             if (message) {
-                db.collection("messages")
+                db.collection("rooms")
+                    .doc(roomId)
+                    .collection("messages")
                     .add({
                         message,
                         userName: user.displayName,
@@ -123,6 +147,9 @@ const ChatRoom: React.FC<IChatRoom> = ({ user, roomName, height }) => {
                         />
                         <button
                             onClick={onPostMessage}
+                            style={{
+                                backgroundImage: `url(/${postMessageIcon})`,
+                            }}
                             className="chat-room__post-message-button"
                         />
                     </form>

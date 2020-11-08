@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from "react";
+import { Switch, Route } from "react-router-dom";
 import Header from "../Header";
-import ChatRoom from "../CharRoom";
+import ChatRooms from "../ChatRooms";
+import ChatRoom from "../ChatRoom";
 import { auth } from "../../firebase";
 import firebase from "firebase";
 import { useClientRect } from "../../customHooks";
@@ -37,7 +39,19 @@ const App: React.FC<IApp> = () => {
     return (
         <div className="app">
             <Header ref={headerRef} user={user} />
-            <ChatRoom user={user} roomName="Беседка" height={chatRoomHeight} />
+            <Switch>
+                <Route path="/" exact children={<ChatRooms />} />
+                <Route
+                    path="/room/:id"
+                    render={(props) => (
+                        <ChatRoom
+                            user={user}
+                            height={chatRoomHeight}
+                            {...props}
+                        />
+                    )}
+                />
+            </Switch>
         </div>
     );
 };
