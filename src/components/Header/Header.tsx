@@ -1,4 +1,5 @@
 import React, { useState, useCallback } from "react";
+import { Link } from "react-router-dom";
 import { auth } from "../../firebase";
 import { Button } from "@material-ui/core";
 import SignUpModal from "../SignUpModal";
@@ -24,7 +25,13 @@ const Header = React.forwardRef<HTMLDivElement, IHeader>(({ user }, ref) => {
 
     return (
         <div ref={ref} className="header">
-            <img className="header__logo-image" src={`/${logo}`} alt="logo" />
+            <Link to="/">
+                <img
+                    className="header__logo-image"
+                    src={`/${logo}`}
+                    alt="logo"
+                />
+            </Link>
             {user ? (
                 <Button onClick={signOut} color="primary">
                     Sign out

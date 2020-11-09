@@ -40,7 +40,7 @@ const App: React.FC<IApp> = () => {
         <div className="app">
             <Header ref={headerRef} user={user} />
             <Switch>
-                <Route path="/" exact children={<ChatRooms />} />
+                <Route path="/" exact children={<ChatRooms user={user} />} />
                 <Route
                     path="/room/:id"
                     render={(props) => (

@@ -1,7 +1,7 @@
 import React, { useState, useCallback, useEffect, useRef } from "react";
 import { db } from "../../firebase";
 import firebase from "firebase";
-import postMessageIcon from "./assets/plus.svg";
+import postMessageIcon from "../../assets/plus.svg";
 import "./chat-room.scss";
 import { RouteComponentProps, useParams } from "react-router-dom";
 
@@ -26,8 +26,6 @@ firebase.firestore.FieldValue.serverTimestamp;
 const ChatRoom: React.FC<IChatRoom> = ({ user, height }) => {
     const { id: roomId } = useParams<IRoomRouteParams>();
 
-    console.log(roomId);
-
     const [roomName, setRoomName] = useState<string>("");
     useEffect(() => {
         db.collection("rooms")
@@ -41,7 +39,8 @@ const ChatRoom: React.FC<IChatRoom> = ({ user, height }) => {
 
     const [messages, setMessages] = useState<Array<IMessage>>([]);
     useEffect(() => {
-        db.collection("rooms")
+        return db
+            .collection("rooms")
             .doc(roomId)
             .collection("messages")
             .orderBy("timestamp", "asc")

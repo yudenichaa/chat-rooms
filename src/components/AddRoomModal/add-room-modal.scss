@@ -1,0 +1,87 @@
+.add-room-modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.5);
+}
+
+.add-room-modal__form {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 20rem;
+    max-width: 95%;
+    background-color: #ffffff;
+    padding: 1rem;
+    border-radius: 1rem;
+}
+
+.add-room-modal__form-headline {
+    text-align: center;
+    margin-bottom: 1rem;
+    font-size: 1.5rem;
+    font-weight: 600;
+}
+
+.add-room-modal__label {
+    font-size: 1.3rem;
+    letter-spacing: 0.1;
+    font-weight: 400;
+    display: block;
+    margin-bottom: 0.5rem;
+}
+
+.add-room-modal__name-input {
+    width: 100%;
+    margin-bottom: 1rem;
+    border: none;
+    border-bottom: 0.05rem solid #afafaf;
+    outline: none;
+    background-color: #f2f2f2;
+    padding: 0.6rem;
+    font-size: 1rem;
+
+    &:focus {
+        border-bottom: 0.05rem solid #36558f;
+        transition: border-color 0.3s;
+    }
+}
+
+.add-room-modal__description-input {
+    width: 100%;
+    margin-bottom: 1rem;
+    border: none;
+    border-bottom: 0.05rem solid #afafaf;
+    outline: none;
+    background-color: #f2f2f2;
+    padding: 0.6rem;
+    font-size: 1rem;
+    height: 10rem;
+    resize: none;
+
+    &:focus {
+        border-bottom: 0.05rem solid #36558f;
+        transition: border-color 0.3s;
+    }
+}
+
+.add-room-modal__add-button {
+    border: none;
+    outline: none;
+    display: block;
+    margin: auto;
+    padding: 1.5rem 1.5rem;
+    border-radius: 50%;
+    background-color: #f2f2f2;
+    background-size: 1.5rem 1.5rem;
+    background-repeat: no-repeat;
+    background-position: center;
+    cursor: pointer;
+
+    &:hover {
+        background-color: #f2f2f2cc;
+    }
+}

@@ -46,7 +46,7 @@ const SignInModal: React.FC<ISignInModal> = ({
     );
 
     const onSignIn = useCallback(
-        (event: React.MouseEvent | React.FormEvent<HTMLFormElement>) => {
+        (event: React.FormEvent<HTMLButtonElement> | React.FormEvent<HTMLFormElement>) => {
             event.preventDefault();
             auth.signInWithEmailAndPassword(userEmail, userPassword)
                 .then(closeSignInModal)
@@ -89,7 +89,7 @@ const SignInModal: React.FC<ISignInModal> = ({
                     <Button
                         type="submit"
                         className={classes.SignIn__Button}
-                        onClick={onSignIn}
+                        onSubmit={onSignIn}
                         color="primary"
                     >
                         Sign in

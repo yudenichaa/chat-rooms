@@ -9,8 +9,27 @@
     margin-bottom: 1.5rem;
 }
 
+.chat-rooms__add-room-button {
+    border: none;
+    outline: none;
+    display: block;
+    margin: 0 auto 1.5rem auto;
+    padding: 1.5rem 1.5rem;
+    border-radius: 50%;
+    background-color: #f2f2f2;
+    background-size: 1.5rem 1.5rem;
+    background-repeat: no-repeat;
+    background-position: center;
+    cursor: pointer;
+
+    &:hover {
+        background-color: #f2f2f2cc;
+    }
+}
+
 .chat-rooms__container {
     max-width: 50rem;
+    padding: 0.5rem;
     margin: auto;
 }
 

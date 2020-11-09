@@ -54,7 +54,11 @@ const SignUpModal: React.FC<ISignUpModal> = ({
     );
 
     const onSignUp = useCallback(
-        (event: React.MouseEvent | React.FormEvent<HTMLFormElement>) => {
+        (
+            event:
+                | React.FormEvent<HTMLButtonElement>
+                | React.FormEvent<HTMLFormElement>
+        ) => {
             event.preventDefault();
             if (!userName) {
                 alert("Enter name");
@@ -113,7 +117,7 @@ const SignUpModal: React.FC<ISignUpModal> = ({
                     <Button
                         type="submit"
                         className={classes.SignUp__Button}
-                        onClick={onSignUp}
+                        onSubmit={onSignUp}
                         color="primary"
                     >
                         Sign up
