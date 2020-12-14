@@ -4,7 +4,8 @@ import Header from "../Header";
 import ChatRooms from "../ChatRooms";
 import ChatRoom from "../ChatRoom";
 import { auth } from "../../firebase";
-import firebase from "firebase";
+import firebase from "firebase/app";
+import 'firebase/firestore';
 import { useClientRect } from "../../customHooks";
 import "./app.scss";
 

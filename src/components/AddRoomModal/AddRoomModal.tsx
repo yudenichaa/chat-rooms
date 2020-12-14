@@ -1,5 +1,6 @@
 import React, { useState, useCallback, useEffect } from "react";
-import firebase from "firebase";
+import firebase from "firebase/app";
+import 'firebase/firestore';
 import { db } from "../../firebase";
 import addRoomIcon from "../../assets/plus.svg";
 import config from "../../config";

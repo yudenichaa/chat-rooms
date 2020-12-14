@@ -2,7 +2,8 @@ import React, { useState, useEffect, useCallback } from "react";
 import { db } from "../../firebase";
 import { Link } from "react-router-dom";
 import AddRoomModal from "../AddRoomModal";
-import firebase from "firebase";
+import firebase from "firebase/app";
+import 'firebase/firestore';
 import "./chat-rooms.scss";
 import addRoomIcon from "../../assets/plus.svg";
 

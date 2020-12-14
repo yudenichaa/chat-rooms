@@ -4,7 +4,8 @@
     "scripts": {
         "start": "webpack-dev-server --open",
         "watch": "webpack --watch",
-        "build": "webpack"
+        "dev": "webpack",
+        "build": "webpack --env.production"
     },
     "devDependencies": {
         "@types/react": "^16.9.55",

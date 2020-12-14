@@ -4,7 +4,7 @@ import { auth } from "../../firebase";
 import { Button } from "@material-ui/core";
 import SignUpModal from "../SignUpModal";
 import SignInModal from "../SignInModal";
-import firebase from "firebase";
+import firebase from "firebase/app";
 import logo from "../../assets/logo.svg";
 import "./header.scss";
 
